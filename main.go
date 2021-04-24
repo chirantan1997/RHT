@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/rs/cors"
 )
@@ -23,6 +24,6 @@ func main() {
 	})
 
 	handler := c.Handler(r)
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
 
 }
