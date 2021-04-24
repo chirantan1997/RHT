@@ -1,0 +1,19 @@
+use('RHT');
+
+// Create a new index in the collection.
+db.getCollection('user')
+  .createIndex(
+    {
+
+      name:'text',
+     phone:'text'   
+    }, {
+
+
+      weights:{
+        name :5,
+      phone:5
+      },
+      name:'phone_index'
+    }
+  )

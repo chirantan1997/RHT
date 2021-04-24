@@ -1,0 +1,4 @@
+.env
+ngrok
+ngrok.exe
+swagger.yaml
