@@ -1,18 +1,33 @@
 package db
 
 import (
-	"Newton/helpers"
 	"context"
 	"log"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+func LoadEnv() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+		os.Exit(1)
+	}
+}
+
+func GetEnvWithKey(key string) string {
+	return os.Getenv(key)
+}
+
 // GetDBCollection ...
 func GetDBCollection(collectione string) (*mongo.Collection, *mongo.Client, error) {
-	client, err := mongo.NewClient(options.Client().ApplyURI(helpers.GetEnvWithKey("ATLAS")))
+	LoadEnv()
+
+	client, err := mongo.NewClient(options.Client().ApplyURI(GetEnvWithKey("ATLAS")))
 	//client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
 		log.Fatal(err)
