@@ -26,7 +26,7 @@ func GetEnvWithKey(key string) string {
 // GetDBCollection ...
 func GetDBCollection(collectione string) (*mongo.Collection, *mongo.Client, error) {
 	//client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("ATLAS")))
-	client, err := mongo.NewClient(options.Client().SetDirect(true).ApplyURI("mongodb://localhost:27017/?connect=direct"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
 		log.Fatal(err)
 	}
