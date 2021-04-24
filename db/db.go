@@ -1,6 +1,7 @@
 package db
 
 import (
+	"Newton/helpers"
 	"context"
 	"log"
 	"time"
@@ -11,8 +12,8 @@ import (
 
 // GetDBCollection ...
 func GetDBCollection(collectione string) (*mongo.Collection, *mongo.Client, error) {
-	//client, err := mongo.NewClient(options.Client().ApplyURI(helpers.GetEnvWithKey("ATLAS")))
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.NewClient(options.Client().ApplyURI(helpers.GetEnvWithKey("ATLAS")))
+	//client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
 		log.Fatal(err)
 	}
